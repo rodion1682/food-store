@@ -1,0 +1,10 @@
+.Navbar {
+	background-color: var(--bg-secondary-color);
+	display: flex;
+	justify-content: space-between;
+	height: var(--navbar-height);
+	&__links {
+		display: flex;
+		align-items: center;
+	}
+}

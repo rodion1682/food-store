@@ -1,0 +1,12 @@
+.AppLink {
+}
+
+.primary {
+	color: var(--primary-color);
+	transition: color 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			color: var(--hint-color);
+		}
+	}
+}

@@ -1,0 +1,57 @@
+@use "../variables/widths" as *;
+@use "sass:math";
+
+@function rem($px, $base: 16) {
+	@return math.div($px, $base) * 1rem;
+}
+
+@mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
+	@if ($startSize == 0) {
+		$startSize: 0.0001;
+	}
+	@if ($minSize == 0) {
+		$minSize: 0.0001;
+	}
+
+	$addSize: math.div($startSize - $minSize, 16);
+
+	@if ($widthFrom == $containerWidth and $maxWidthContainer == 0) {
+		$widthFrom: $maxWidth;
+	}
+
+	$widthFromMedia: em($widthFrom);
+	$widthToMedia: em($widthTo);
+
+	$slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+	$yIntersection: -$widthTo * $slope + $minSize;
+	$flyValue: #{rem($yIntersection)} + #{$slope * 100}vw;
+
+	$propertyValue: clamp(#{rem($minSize)}, #{$flyValue}, #{rem($startSize)});
+
+	@if ($minSize > $startSize) {
+		$propertyValue: clamp(#{rem($startSize)}, #{$flyValue}, #{rem($minSize)});
+	}
+
+	@supports (#{$property}: #{$propertyValue}) {
+		#{$property}: #{$propertyValue};
+	}
+
+	@supports not (#{$property}: #{$propertyValue}) {
+		#{$property}: calc(
+			#{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) / #{math.div($widthFrom, 16) -
+				math.div($widthTo, 16)}
+		);
+	}
+
+	@if $widthFrom != $containerWidth and $widthFrom != $maxWidth and $keepSize != 1 and $keepSize != 2 {
+		@media (min-width: #{$widthFromMedia}) {
+			#{$property}: inherit;
+		}
+	}
+
+	@if $widthTo != $minWidth and $keepSize != 1 and $keepSize != 3 {
+		@media (max-width: #{$widthToMedia}) {
+			#{$property}: inherit;
+		}
+	}
+}

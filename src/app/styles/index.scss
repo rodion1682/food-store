@@ -1,13 +1,17 @@
 @use "reset";
 @use "variables/global";
+@use "variables/sizes";
 @use "themes/normal";
 @use "themes/dark";
+@use "base/mixins";
 
 .app {
-	font: var(--font-m);
+	font: var(--font-s);
 
 	background: var(--bg-color);
 	color: var(--primary-color);
 
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }

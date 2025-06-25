@@ -1,8 +1,16 @@
 import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
+
+const projectRoot = path.resolve(__dirname, '..', '..');
 
 export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+	const svgLoader = {
+		test: /\.svg$/,
+		use: ['@svgr/webpack'],
+	};
+
 	const cssLoader = {
 		test: /\.s[ac]ss$/i,
 		use: [
@@ -11,15 +19,30 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
 				loader: 'css-loader',
 				options: {
 					modules: {
-						auto: (resPath: string) =>
-							Boolean(resPath.includes('.module.')),
+						auto: (resPath: string) => resPath.includes('.module.'),
 						localIdentName: isDev
 							? '[path][name]__[local]'
 							: '[hash:base64:8]',
 					},
 				},
 			},
-			'sass-loader',
+			{
+				loader: 'sass-loader',
+				options: {
+					sassOptions: {
+						includePaths: [path.resolve(projectRoot, 'src')],
+					},
+					additionalData: (
+						content: string,
+						ctx: { resourcePath: string }
+					) => {
+						if (ctx.resourcePath.includes('.module.')) {
+							return `@use "app/styles/base/mixins" as *;\n${content}`;
+						}
+						return content;
+					},
+				},
+			},
 		],
 	};
 
@@ -29,5 +52,14 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
 		exclude: /node_modules/,
 	};
 
-	return [typescriptLoader, cssLoader];
+	const fileLoader = {
+		test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+		use: [
+			{
+				loader: 'file-loader',
+			},
+		],
+	};
+
+	return [fileLoader, svgLoader, typescriptLoader, cssLoader];
 }

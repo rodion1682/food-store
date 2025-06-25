@@ -1,0 +1,34 @@
+.SvgIcon {
+	position: relative;
+
+	svg {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+
+		path {
+			fill: var(--primary-color);
+		}
+	}
+
+	&__stroke {
+		svg {
+			path {
+				fill: var(--bg-color);
+				stroke: var(--primary-color);
+			}
+		}
+	}
+}
+
+.navbar_theme {
+	height: 26px;
+	width: 26px;
+}
+
+.small {
+	height: 18px;
+	width: 18px;
+}

@@ -1,0 +1,46 @@
+.Loader {
+	animation: rotate 1s linear infinite;
+	border-radius: 50%;
+	display: block;
+	height: 48px;
+	position: relative;
+	width: 48px;
+}
+
+.Loader::before {
+	animation: prix-clip-fix 2s linear infinite;
+	border: 5px solid var(--primary-color);
+	border-radius: 50%;
+	box-sizing: border-box;
+	content: "";
+	inset: 0;
+	position: absolute;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes prix-clip-fix {
+	0% {
+		clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+	}
+
+	25% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+	}
+
+	50% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+	}
+
+	75% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+	}
+
+	100% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+	}
+}
