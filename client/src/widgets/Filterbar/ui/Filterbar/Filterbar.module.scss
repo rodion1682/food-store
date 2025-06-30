@@ -1,0 +1,22 @@
+.Filterbar {
+	height: calc(100vh - var(--navbar-height));
+	background-color: var(--bg-secondary-color);
+	transition: transform 0.5s ease 0s;
+	position: relative;
+	transform: translate(0px, 0px);
+	padding: 15px;
+	@include adaptiveValue("width", 600, 200, 1920, 991.98);
+	&_colapsed {
+		transform: translate(-100%, 0px);
+	}
+	&__button {
+		position: absolute;
+		top: 10px;
+		right: -40px;
+		&_colapsed {
+			svg {
+				transform: rotate(90deg);
+			}
+		}
+	}
+}
