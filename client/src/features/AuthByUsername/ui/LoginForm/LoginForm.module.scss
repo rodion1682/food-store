@@ -1,0 +1,11 @@
+.LoginForm {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 10px;
+	&__button {
+		height: 45px;
+		max-width: 200px;
+		width: 100%;
+	}
+}

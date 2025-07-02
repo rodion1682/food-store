@@ -1,11 +1,29 @@
 import { StateSchema } from './StateSchema';
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
+import { userReducer } from 'entities/User';
+import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(initialState?: StateSchema) {
-	return configureStore<StateSchema>({
-		reducer: { counter: counterReducer },
+	const rootReducer: ReducersMapObject<StateSchema> = {
+		counter: counterReducer,
+		user: userReducer,
+	};
+
+	const reducerManager = createReducerManager(rootReducer);
+
+	const store = configureStore<StateSchema>({
+		reducer: reducerManager.reduce,
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
 	});
+
+	// @ts-ignore
+	store.reducerManager = reducerManager;
+
+	return store;
 }
+
+export type AppStore = ReturnType<typeof createReduxStore>;
+export type RootState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];

@@ -3,6 +3,9 @@
 		position: relative;
 		width: 100%;
 		height: 20px;
+		&:not(:last-child) {
+			margin: 0px 0px 20px 0px;
+		}
 	}
 	&__track {
 		position: absolute;

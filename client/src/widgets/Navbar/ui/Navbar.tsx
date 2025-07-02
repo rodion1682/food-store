@@ -6,10 +6,11 @@ import { AppLink } from 'shared/ui/AppLink';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal';
 import { Button } from 'shared/ui/Button';
-import { useSelector } from 'react-redux';
-import { getCounterValue } from 'entities/Counter/model/selectors/getCounterValue/getCounterValue';
+import { LoginModal } from 'features/AuthByUsername';
+import { useAppSelector } from 'shared/hooks/useAppSelector/useAppSelector';
+import { getUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
 
 interface NavbarProps {
 	className?: string;
@@ -17,12 +18,21 @@ interface NavbarProps {
 
 export const Navbar = memo(({ className }: NavbarProps) => {
 	const { t } = useTranslation();
-	const [isAuthModal, setIsAuthModal] = useState(false);
-	const counterValue = useSelector(getCounterValue);
+	const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+	const authData = useAppSelector(getUserAuthData);
+	const dispatch = useAppDispatch();
 
-	const toggleModal = useCallback(() => {
-		setIsAuthModal((prev) => !prev);
+	const handleOpenModal = useCallback(() => {
+		setIsAuthModalOpen(true);
 	}, []);
+
+	const handleCloseModal = useCallback(() => {
+		setIsAuthModalOpen(false);
+	}, []);
+
+	const handleLogout = useCallback(() => {
+		dispatch(userActions.logout());
+	}, [dispatch]);
 
 	return (
 		<nav className={classNames(cls.Navbar, {}, [className])}>
@@ -32,14 +42,19 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 			</div>
 			<ThemeSwitcher />
 			<LangSwitcher />
-			<Button onClick={toggleModal}>Modal button</Button>
-			<Modal isOpen={isAuthModal} onClose={toggleModal}>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque
-				id ipsa totam cupiditate omnis dolores optio repellendus assumenda
-				debitis laudantium dignissimos ad repellat neque voluptatem
-				incidunt, numquam quas tempora architecto?
-			</Modal>
-			<div>counterValue: {counterValue}</div>
+			{authData ? (
+				<Button onClick={handleLogout}>{t('Logout')}</Button>
+			) : (
+				<>
+					<Button onClick={handleOpenModal}>{t('Login')}</Button>
+					{isAuthModalOpen && (
+						<LoginModal
+							isOpen={isAuthModalOpen}
+							onClose={handleCloseModal}
+						/>
+					)}
+				</>
+			)}
 		</nav>
 	);
 });

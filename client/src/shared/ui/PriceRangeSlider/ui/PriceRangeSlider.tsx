@@ -128,7 +128,6 @@ export const PriceRangeSlider = memo((props: PriceRangeSliderProps) => {
 					theme={InputTheme.PRICE_INPUT}
 					type={InputType.NUMBER}
 					label={'Min'}
-					labelId={'Min'}
 					min={priceMin}
 					max={priceMax - 1}
 					step={1}
@@ -139,7 +138,6 @@ export const PriceRangeSlider = memo((props: PriceRangeSliderProps) => {
 					theme={InputTheme.PRICE_INPUT}
 					type={InputType.NUMBER}
 					label={'Max'}
-					labelId={'Max'}
 					min={priceMin + 1}
 					max={priceMax}
 					step={1}

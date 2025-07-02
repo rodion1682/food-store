@@ -6,6 +6,7 @@ import {
 	ChangeEvent,
 	useState,
 	useEffect,
+	useRef,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SvgIcon } from 'shared/ui/SvgIcon/ui/SvgIcon';
@@ -42,11 +43,10 @@ interface InputProps extends HTMLInputProps {
 	value?: string | number;
 	onChange?: (value: ChangeValue) => void;
 	type?: InputType;
-	placeholder?: string;
 	theme?: InputTheme;
 	readonly?: boolean;
 	label?: string;
-	labelId?: string;
+	autofocus?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -58,18 +58,33 @@ export const Input = memo((props: InputProps) => {
 		placeholder = t('Enter text'),
 		type = InputType.TEXT,
 		theme = InputTheme.MAIN_INPUT,
+		autofocus,
 		readonly,
 		label,
-		labelId,
 		...otherProps
 	} = props;
+	const ref = useRef<HTMLInputElement>(null);
+	const [isFocused, setIsFocused] = useState(false);
+	const [isPassword, setIsPassword] = useState(false);
+	const [isVisible, setIsVisible] = useState(false);
+	const hasValue = value !== '' && value !== undefined && value !== null;
+
+	const passwordVisibleHandler = () => {
+		setIsVisible((prev) => !prev);
+	};
+
 	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		const raw = e.target.value;
 		const val = type === InputType.NUMBER ? Number(raw) || 0 : raw;
 		onChange?.(val);
 	};
-	const [isPassword, setIsPassword] = useState(false);
-	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		if (autofocus) {
+			setIsFocused(true);
+			ref.current?.focus();
+		}
+	}, [autofocus]);
 
 	useEffect(() => {
 		if (type === InputType.PASSWORD) {
@@ -77,26 +92,36 @@ export const Input = memo((props: InputProps) => {
 		}
 	}, [type]);
 
-	const passwordVisibleHandler = () => {
-		setIsVisible((prev) => !prev);
+	const onBlur = () => {
+		setIsFocused(false);
+	};
+
+	const onFocus = () => {
+		setIsFocused(true);
 	};
 
 	return (
 		<div
-			className={classNames(cls.Input, { [cls.readonly]: readonly }, [
-				className,
-				cls[theme],
-			])}
+			className={classNames(
+				cls.Input,
+				{
+					[cls.readonly]: readonly,
+					[cls.Input_focus]: isFocused,
+					[cls.Input_hasValue]: hasValue,
+				},
+				[className, cls[theme]]
+			)}
 		>
 			{theme === InputTheme.SEARCH_INPUT && (
 				<SvgIcon className={cls.Input__icon} children={<SearchIcon />} />
 			)}
 			{label && (
-				<label className={cls.Input__label} htmlFor={labelId}>
+				<label className={cls.Input__label} htmlFor={label}>
 					{label}
 				</label>
 			)}
 			<input
+				ref={ref}
 				type={
 					type === InputType.PASSWORD
 						? isVisible === true
@@ -104,11 +129,12 @@ export const Input = memo((props: InputProps) => {
 							: InputType.PASSWORD
 						: type
 				}
-				value={value}
+				value={hasValue ? value : null}
 				onChange={onChangeHandler}
-				placeholder={placeholder}
+				onFocus={onFocus}
+				onBlur={onBlur}
 				readOnly={readonly}
-				id={labelId}
+				id={label}
 				{...otherProps}
 			/>
 			{isPassword && (

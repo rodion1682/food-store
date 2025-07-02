@@ -5,5 +5,11 @@
 	"Couldn't find the page": "Couldn't find the page",
 	"An unexpected error occurred": "An unexpected error occurred",
 	"Reload page": "Reload page",
-	"Product filters": "Product filters"
+	"Product filters": "Product filters",
+	"Login": "Login",
+	"Logout": "Logout",
+	"Enter username": "Enter username",
+	"Enter password": "Enter password",
+	"Login form": "Login form",
+	"You enter wrong username or password": "You enter wrong username or password"
 }

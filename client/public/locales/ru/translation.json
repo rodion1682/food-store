@@ -5,5 +5,11 @@
 	"Couldn't find the page": "Не удалось найти страницу",
 	"An unexpected error occurred": "Произошла непредвиденная ошибка",
 	"Reload page": "Перезагрузить страницу",
-	"Product filters": "Фильтры продуктов"
+	"Product filters": "Фильтры продуктов",
+	"Login": "Войти",
+	"Logout": "Выйти",
+	"Enter username": "Введите имя пользователя",
+	"Enter password": "Введите пароль",
+	"Login form": "Форма входа",
+	"You enter wrong username or password": "Вы ввели неправильное имя пользователя или пароль"
 }

@@ -1,9 +1,17 @@
 .Input {
 	position: relative;
 	width: 100%;
+	height: 45px;
+	&_focus,
+	&_hasValue {
+		.Input__label {
+			transform: scale(0.8) translate(0px, -50%);
+			top: 0px;
+			left: 0px;
+		}
+	}
 
 	input {
-		background-color: transparent;
 		border: 1px solid var(--primary-color);
 		border-radius: var(--border-radius);
 		color: var(--primary-color);
@@ -15,6 +23,8 @@
 		pointer-events: auto;
 		transition: all 0.3s ease 0s;
 		width: 100%;
+		min-height: 100%;
+		background-color: transparent;
 
 		&::placeholder {
 			color: var(--secondray-color);
@@ -39,6 +49,15 @@
 	input[type="number"] {
 		-moz-appearance: textfield;
 	}
+	&__label {
+		position: absolute;
+		top: 50%;
+		transform: translate(0px, -50%);
+		left: 10px;
+		transition: all 0.3s ease 0s;
+		padding: 0px 5px;
+		background-color: var(--bg-secondary-color);
+	}
 
 	&__icon {
 		left: 10px;
@@ -62,7 +81,6 @@
 
 	input {
 		border-bottom-right-radius: 0;
-		border-right: none;
 		border-top-right-radius: 0;
 		padding: 0 15px 0 15px;
 	}
@@ -71,36 +89,6 @@
 .search_input {
 	input {
 		padding: 0 15px 0 40px;
-	}
-}
-
-.readonly {
-	input {
-		opacity: 0.5;
-		pointer-events: none;
-	}
-}
-
-.euro,
-.area {
-	position: relative;
-
-	&::after {
-		color: var(--primary-color);
-		position: absolute;
-		right: 15px;
-		top: 50%;
-		transform: translate(0, -50%);
-	}
-
-	input {
-		padding: 0 30px 0 15px;
-	}
-}
-
-.euro {
-	&::after {
-		content: "€";
 	}
 }
 
@@ -149,7 +137,7 @@
 .price_input {
 	input {
 		padding: 3px 10px;
-		background: var(--bg-color);
+		background-color: transparent;
 	}
 	.Input__label {
 		&:not(:last-child) {
