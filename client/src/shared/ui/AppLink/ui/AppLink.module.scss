@@ -1,6 +1,7 @@
 .AppLink {
 }
 
+.navbar,
 .primary {
 	color: var(--primary-color);
 	transition: color 0.3s ease 0s;
@@ -8,5 +9,37 @@
 		&:hover {
 			color: var(--hint-color);
 		}
+	}
+}
+
+.navbar {
+	pointer-events: auto;
+	cursor: pointer;
+	min-height: 100%;
+	padding: 0px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	&::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		bottom: 0px;
+		transition: width 0.3s ease 0s;
+		transform: translate(-50%, 0px);
+		height: 2px;
+		width: 0px;
+		background-color: var(--hint-color);
+	}
+}
+
+.active {
+	pointer-events: none;
+	cursor: default;
+	color: var(--hint-color);
+	&::after {
+		content: "";
+		width: 100%;
 	}
 }

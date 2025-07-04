@@ -8,9 +8,9 @@ import { useSelector, useStore } from 'react-redux';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text';
-import { useAppSelector } from 'shared/hooks/useAppSelector/useAppSelector';
+import { useAppSelector } from 'shared/lib/hooks/useAppSelector/useAppSelector';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
@@ -22,13 +22,15 @@ import {
 
 export interface LoginFormProps {
 	className?: string;
+	onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
 	loginForm: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo((props: LoginFormProps) => {
+	const { className, onSuccess } = props;
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 
@@ -51,8 +53,12 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 		[dispatch]
 	);
 
-	const onLoginSubmit = useCallback(() => {
-		dispatch(loginByUsername({ username, password }));
+	const onLoginSubmit = useCallback(async () => {
+		const result = await dispatch(loginByUsername({ username, password }));
+
+		if (result.meta.requestStatus === 'fulfilled') {
+			onSuccess();
+		}
 	}, [dispatch, username, password]);
 
 	return (

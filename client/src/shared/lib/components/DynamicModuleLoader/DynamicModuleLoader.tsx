@@ -1,9 +1,9 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
-import { memo, ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export type ReducersList = {
 	[name in StateSchemaKey]?: Reducer;
@@ -17,7 +17,7 @@ interface DynamicModuleLoaderProps {
 	remvoeAfterUnmount?: boolean;
 }
 
-export const DynamicModuleLoader = memo((props: DynamicModuleLoaderProps) => {
+export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
 	const { children, reducers, remvoeAfterUnmount } = props;
 	const store = useStore() as ReduxStoreWithManager;
 	const dispatch = useAppDispatch();
@@ -41,4 +41,4 @@ export const DynamicModuleLoader = memo((props: DynamicModuleLoaderProps) => {
 	}, []);
 
 	return children;
-});
+};

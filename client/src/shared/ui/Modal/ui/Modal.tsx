@@ -1,4 +1,4 @@
-import { memo, ReactNode, useCallback, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Modal.module.scss';
 import { Portal } from 'shared/ui/Portal';
@@ -12,7 +12,7 @@ interface ModalProps {
 	lazy?: boolean;
 }
 
-export const Modal = memo((props: ModalProps) => {
+export const Modal = (props: ModalProps) => {
 	const { className, isOpen, onClose, children, lazy } = props;
 	const [isMounted, setIsMounted] = useState(false);
 	const { theme } = useTheme();
@@ -70,4 +70,4 @@ export const Modal = memo((props: ModalProps) => {
 			</div>
 		</Portal>
 	);
-});
+};

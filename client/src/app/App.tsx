@@ -4,7 +4,7 @@ import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from './providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Suspense, useEffect } from 'react';
-import { useAppDispatch } from 'shared/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from 'entities/User';
 
 const App = () => {

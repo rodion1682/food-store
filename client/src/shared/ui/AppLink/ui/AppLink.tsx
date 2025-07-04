@@ -5,12 +5,14 @@ import { Link, LinkProps } from 'react-router-dom';
 
 export enum AppLinkTheme {
 	PRIMARY = 'primary',
+	NAVBAR = 'navbar',
 }
 
 interface AppLinkProps extends LinkProps {
 	className?: string;
 	children: ReactNode;
 	theme?: AppLinkTheme;
+	active?: boolean;
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
@@ -19,13 +21,17 @@ export const AppLink = memo((props: AppLinkProps) => {
 		to,
 		children,
 		theme = AppLinkTheme.PRIMARY,
+		active,
 		...otherProps
 	} = props;
 
 	return (
 		<Link
 			to={to}
-			className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+			className={classNames(cls.AppLink, { [cls.active]: active }, [
+				className,
+				cls[theme],
+			])}
 			{...otherProps}
 		>
 			{children}
