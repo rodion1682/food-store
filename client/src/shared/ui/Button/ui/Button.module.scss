@@ -1,13 +1,21 @@
 .Button {
 }
 
-.primary {
+.primary,
+.green,
+.red,
+.dropdown,
+.select {
+	color: var(--primary-color);
 	width: fit-content;
 	border-radius: var(--border-radius);
+	padding: 8px 15px;
+	transition: background-color 0.3s ease 0s;
+}
+
+.primary {
 	color: var(--primary-color);
 	background-color: var(--hint-color);
-	padding: 5px 15px;
-	transition: background-color 0.3s ease 0s;
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: var(--hint-hover-color);
@@ -15,7 +23,71 @@
 	}
 }
 
-.secondary {
+.green {
+	background-color: var(--green-color);
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: var(--green-hover-color);
+		}
+	}
+}
+
+.red {
+	background-color: var(--error-color);
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: var(--error-hover-color);
+		}
+	}
+}
+
+.dropdown,
+.select {
+	font-weight: 600;
+	width: 100%;
+	display: flex;
+	background-color: var(--bg-color);
+}
+
+.dropdown {
+	border: 1px solid var(--primary-color);
+	transition: border 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			border: 1px solid var(--hint-color);
+		}
+	}
+}
+
+.select {
+	@media (any-hover: hover) {
+		border: 1px solid var(--primary-color);
+		&:hover {
+			background-color: var(--hint-hover-color);
+		}
+	}
+}
+
+.dropdown {
+	padding: 8px 38px 8px 15px;
+	position: relative;
+	transition: all 0.3s ease 0s;
+
+	&__icon {
+		position: absolute !important;
+		right: 15px;
+		top: 50%;
+		transform: translate(0, -50%) rotate(180deg);
+		transition: transform 0.5s ease 0s;
+	}
+}
+
+.dropdown_open {
+	border: 1px solid var(--hint-color);
+
+	.dropdown__icon {
+		transform: translate(0, -50%) rotate(0deg);
+	}
 }
 
 .password,

@@ -5,12 +5,21 @@
 	&_focus,
 	&_hasValue {
 		.Input__label {
-			transform: scale(0.8) translate(0px, -50%);
+			transform: scale(0.8) translate(0px, -70%);
 			top: 0px;
 			left: 0px;
 		}
 	}
+	&_readonly {
+		opacity: 0.65;
 
+		input {
+			pointer-events: none;
+			&:focus {
+				border: 1px solid var(--primary-color) !important;
+			}
+		}
+	}
 	input {
 		border: 1px solid var(--primary-color);
 		border-radius: var(--border-radius);
@@ -25,19 +34,8 @@
 		width: 100%;
 		min-height: 100%;
 		background-color: transparent;
-
-		&::placeholder {
-			color: var(--secondray-color);
-			font-weight: 600;
-			transition: color 0.3s ease 0s;
-		}
-
 		&:focus {
 			border: 1px solid var(--hint-color);
-
-			&::placeholder {
-				color: transparent;
-			}
 		}
 	}
 	input[type="number"]::-webkit-outer-spin-button,
@@ -70,9 +68,16 @@
 	}
 }
 
-.main_input {
+.secondary,
+.primary {
 	input {
 		padding: 0 15px 0 15px;
+	}
+}
+
+.secondary {
+	.Input__label {
+		background-color: var(--bg-color);
 	}
 }
 

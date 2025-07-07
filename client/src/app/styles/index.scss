@@ -1,9 +1,9 @@
 @use "reset";
 @use "variables/global";
-@use "variables/sizes";
 @use "themes/normal";
 @use "themes/dark";
 @use "base/mixins";
+@use "base/classes";
 
 body {
 	color: var(--primary-color);

@@ -1,1 +1,1 @@
-export { Input, InputTheme, InputType } from './ui/Input';
+export { Input, InputTheme, InputType, ChangeValue } from './ui/Input';

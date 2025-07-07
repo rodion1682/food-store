@@ -7,17 +7,17 @@ import './shared/config/i18n/i18n';
 import { ErrorBoundary } from 'app/providers/ErrorBoundary';
 import { StoreProvider } from 'app/providers/StoreProvider';
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('root')!;
 const root = ReactDOM.createRoot(rootElement);
 
 root.render(
-	<StoreProvider>
-		<BrowserRouter>
+	<BrowserRouter>
+		<StoreProvider>
 			<ErrorBoundary>
 				<ThemeProvider>
 					<App />
 				</ThemeProvider>
 			</ErrorBoundary>
-		</BrowserRouter>
-	</StoreProvider>
+		</StoreProvider>
+	</BrowserRouter>
 );

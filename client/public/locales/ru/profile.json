@@ -1,0 +1,14 @@
+{
+	"Profile": "Профиль",
+	"Edit profile": "Редактировать профиль",
+	"First name": "Имя",
+	"Last name": "Фамилия",
+	"Username": "Имя пользователя",
+	"Email": "Адрес электронной почты",
+	"Currency": "Валюта",
+	"An error occurred while loading the profile": "Произошла ошибка при загрузке профиля",
+	"Try to reload the page": "Попробуйте перезагрузить страницу",
+	"Cancel changes": "Отменить изменения",
+	"You are able to edit your profile": "Вы можете редактировать свой профиль",
+	"Failed to load the currency": "Не удалось загрузить валюту"
+}

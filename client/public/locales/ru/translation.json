@@ -8,8 +8,8 @@
 	"Product filters": "Фильтры продуктов",
 	"Login": "Войти",
 	"Logout": "Выйти",
-	"Enter username": "Введите имя пользователя",
+	"Enter email": "Введите адрес электронной почты",
 	"Enter password": "Введите пароль",
 	"Login form": "Форма входа",
-	"You enter wrong username or password": "Вы ввели неправильное имя пользователя или пароль"
+	"You enter wrong email or password": "Вы ввели неправильный адрес электронной почты или пароль"
 }

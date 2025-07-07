@@ -1,40 +1,26 @@
 <?php
+	require_once __DIR__ . '/../helpers/allowOrigin.php';
+	
+	allowOrigin($methods = ['POST', 'OPTIONS']);
 
-	// Allow React dev-server call it
-	$allowedOrigin = 'http://localhost:3000';
-	header("Access-Control-Allow-Origin: $allowedOrigin");
-
-	header('Access-Control-Allow-Credentials: true'); // allow cookies / sessions
-	header('Access-Control-Allow-Methods: POST, OPTIONS');
-	header('Access-Control-Allow-Headers: Content-Type');
-	header('Content-Type: application/json'); // every response is JSON
-
-	// Handle pre-flight OPTIONS request quickly
 	if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-		http_response_code(200);
-		exit;
+    http_response_code(204);
+    exit;                             
 	}
 
-	// Only allow POST for real requests
-	if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-		http_response_code(405);        // Method Not Allowed
-		echo json_encode(['error' => 'Only POST is allowed.']);
-		exit;
-	}
-
-	// Starts PHP session
+	require_once __DIR__ . '/../config/connect.php';
 	session_start();
-	require_once __DIR__ . '/../config/connect.php';  
 
 	// Read values from JSON payload
 	$input = json_decode(file_get_contents('php://input'), true);
-	$username = $input['username'] ?? '';
+	$email = $input['email'] ?? '';
 	$password = $input['password'] ?? '';
 
+
 	// Checks if $username and $password aren't empty
-	if ($username === '' || $password === '') {
+	if ($email === '' || $password === '') {
 		http_response_code(400);
-		echo json_encode(['error' => 'Username and password are required.']);
+		echo json_encode(['error' => 'Email and password are required.']);
 		exit;
 	}
 
@@ -43,20 +29,20 @@
 
 	// Prepared statement: fetch user by username
     $stmt = $connect->prepare(
-        'SELECT id, username, password FROM users WHERE username = ?'
+        'SELECT id, email, password FROM users WHERE email = ?'
     );
     if (!$stmt) {
         throw new Exception($connect->error);
     }
 
-    $stmt->bind_param('s', $username);
+    $stmt->bind_param('s', $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     // Username not found
     if ($result->num_rows === 0) {
         http_response_code(401);
-        echo json_encode(['error' => 'Username not found.']);
+        echo json_encode(['error' => 'Email not found.']);
         exit;
     }
 

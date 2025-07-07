@@ -37,12 +37,14 @@ export const Filterbar = memo(({ className }: FilterbarProps) => {
 			>
 				<SvgIcon children={<ChevroneIcon />} />
 			</Button>
-			<div>{t('Product filters')}</div>
-			<PriceRangeSlider
-				priceMin={0}
-				priceMax={1000}
-				onChange={(min, max) => console.log(min, max)}
-			/>
+			<div className={cls.Filterbar__body}>
+				<div>{t('Product filters')}</div>
+				<PriceRangeSlider
+					priceMin={0}
+					priceMax={1000}
+					onChange={(min, max) => console.log(min, max)}
+				/>
+			</div>
 		</div>
 	);
 });

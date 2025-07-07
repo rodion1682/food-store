@@ -1,10 +1,23 @@
 .Navbar {
 	background-color: var(--bg-secondary-color);
-	display: flex;
-	justify-content: space-between;
 	height: var(--navbar-height);
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		padding-left: 0px;
+		min-height: 100%;
+	}
 	&__links {
 		display: flex;
 		align-items: center;
+	}
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 15px;
+		padding: 7px 0px;
+	}
+	&__action {
+		min-height: 100%;
 	}
 }

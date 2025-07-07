@@ -16,7 +16,8 @@ import EyeSlashIcon from 'shared/assets/icons/eye-slash.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 
 export enum InputTheme {
-	MAIN_INPUT = 'main_input',
+	PRIMARY = 'primary',
+	SECONDARY = 'secondary',
 	PASSWORD_INPUT = 'password_input',
 	SEARCH_INPUT = 'search_input',
 	EURO = 'euro',
@@ -36,7 +37,7 @@ type HTMLInputProps = Omit<
 	'value' | 'onChange' | 'readonly'
 >;
 
-type ChangeValue = string | number;
+export type ChangeValue = string | number;
 
 interface InputProps extends HTMLInputProps {
 	className?: string;
@@ -47,6 +48,7 @@ interface InputProps extends HTMLInputProps {
 	readonly?: boolean;
 	label?: string;
 	autofocus?: boolean;
+	autocomplete?: string;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -57,10 +59,11 @@ export const Input = memo((props: InputProps) => {
 		onChange,
 		placeholder = t('Enter text'),
 		type = InputType.TEXT,
-		theme = InputTheme.MAIN_INPUT,
+		theme = InputTheme.PRIMARY,
 		autofocus,
 		readonly,
 		label,
+		autocomplete,
 		...otherProps
 	} = props;
 	const ref = useRef<HTMLInputElement>(null);
@@ -105,7 +108,7 @@ export const Input = memo((props: InputProps) => {
 			className={classNames(
 				cls.Input,
 				{
-					[cls.readonly]: readonly,
+					[cls.Input_readonly]: readonly,
 					[cls.Input_focus]: isFocused,
 					[cls.Input_hasValue]: hasValue,
 				},
@@ -129,12 +132,13 @@ export const Input = memo((props: InputProps) => {
 							: InputType.PASSWORD
 						: type
 				}
-				value={hasValue ? value : null}
+				value={hasValue ? value : ''}
 				onChange={onChangeHandler}
 				onFocus={onFocus}
 				onBlur={onBlur}
 				readOnly={readonly}
 				id={label}
+				autoComplete={autocomplete}
 				{...otherProps}
 			/>
 			{isPassword && (

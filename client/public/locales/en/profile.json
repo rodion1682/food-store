@@ -1,0 +1,14 @@
+{
+	"Profile": "Profile",
+	"Edit profile": "Edit profile",
+	"First name": "First name",
+	"Last name": "Last name",
+	"Username": "Username",
+	"Email": "Email",
+	"Currency": "Currency",
+	"An error occurred while loading the profile": "An error occurred while loading the profile",
+	"Try to reload the page": "Try to reload the page",
+	"Cancel changes": "Cancel changes",
+	"You are able to edit your profile": "You are able to edit your profile",
+	"Failed to load the currency": "Failed to load the currency"
+}

@@ -8,8 +8,8 @@
 	"Product filters": "Product filters",
 	"Login": "Login",
 	"Logout": "Logout",
-	"Enter username": "Enter username",
+	"Enter email": "Enter email",
 	"Enter password": "Enter password",
 	"Login form": "Login form",
-	"You enter wrong username or password": "You enter wrong username or password"
+	"You enter wrong email or password": "You enter wrong email or password"
 }
