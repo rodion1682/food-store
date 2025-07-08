@@ -1,7 +1,2 @@
-export { fetchCurrencyData } from './model/services/fetchCurrencyData/fetchCurrencyData';
-
-export { currencyActions, currencyReducer } from './model/slice/currencySlice';
-
-export { CurrencyScheme } from './model/types/currency';
-
-export { Currency } from './ui/Currency';
+export { Currency } from './model/types/currency';
+export { CurrencySelect } from './ui/CurrencySelect/CurrencySelect';

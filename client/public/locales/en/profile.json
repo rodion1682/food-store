@@ -10,5 +10,11 @@
 	"Try to reload the page": "Try to reload the page",
 	"Cancel changes": "Cancel changes",
 	"You are able to edit your profile": "You are able to edit your profile",
-	"Failed to load the currency": "Failed to load the currency"
+	"First name is required": "First name is required",
+	"Last name is required": "Last name is required",
+	"User name is required": "User name is required",
+	"E-mail is not valid": "E-mail is not valid",
+	"An email is required": "An email is required",
+	"Form data is required": "Form data is required",
+	"Update failed. Server error.": "Update failed. Server error."
 }

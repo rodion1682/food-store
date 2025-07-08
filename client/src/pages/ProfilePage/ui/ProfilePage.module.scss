@@ -3,4 +3,10 @@
 	min-height: calc(100vh - var(--navbar-height));
 	&__container {
 	}
+	&__errors,
+	&__card {
+		&:not(:last-child) {
+			margin: 0px 0px 15px 0px;
+		}
+	}
 }

@@ -1,4 +1,1 @@
-export enum Currency {
-	'EURO' = 'EURO',
-	'USD' = 'USD',
-}
+export const EMAIL_REG_EXP = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;

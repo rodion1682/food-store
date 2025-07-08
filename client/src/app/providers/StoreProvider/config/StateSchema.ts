@@ -7,7 +7,6 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { CounterScheme } from 'entities/Counter';
-import { CurrencyScheme } from 'entities/Currency';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
@@ -20,7 +19,6 @@ export interface StateSchema {
 	// Async reducers
 	loginForm?: LoginSchema;
 	profile?: ProfileSchema;
-	currency?: CurrencyScheme;
 }
 
 export type StateSchemaKey = keyof StateSchema;
@@ -42,7 +40,7 @@ export interface ThunkExtraArg {
 }
 
 export interface ThunkConfig<T> {
-	rejectWithValue: T;
+	rejectValue: T;
 	extra: ThunkExtraArg;
 	state: StateSchema;
 }

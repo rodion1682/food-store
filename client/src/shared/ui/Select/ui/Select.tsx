@@ -11,7 +11,7 @@ interface SelectProps {
 	options?: string[];
 	placeholder?: string;
 	selectedOption?: string;
-	onChange?: (value?: string) => void;
+	onChange?: (value: string) => void;
 	readonly?: boolean;
 }
 

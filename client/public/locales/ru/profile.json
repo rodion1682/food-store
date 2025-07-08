@@ -10,5 +10,11 @@
 	"Try to reload the page": "Попробуйте перезагрузить страницу",
 	"Cancel changes": "Отменить изменения",
 	"You are able to edit your profile": "Вы можете редактировать свой профиль",
-	"Failed to load the currency": "Не удалось загрузить валюту"
+	"First name is required": "Имя обязательно",
+	"Last name is required": "Фамилия обязательна",
+	"User name is required": "Имя пользователя обязательно",
+	"E-mail is not valid": "Некорректный адрес электронной почты",
+	"An email is required": "Требуется адрес электронной почты",
+	"Form data is required": "Данные формы обязательны",
+	"Update failed. Server error.": "Обновление не удалось. Ошибка сервера."
 }

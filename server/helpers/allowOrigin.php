@@ -1,24 +1,5 @@
 <?php
 
-//function allowOrigin(string $origin = 'http://localhost:3000'): void
-//{
-//    header("Access-Control-Allow-Origin: $origin");
-//    header('Access-Control-Allow-Credentials: true');
-
-//    header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-
-//    if (!empty($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
-//        header(
-//            'Access-Control-Allow-Headers: ' .
-//            $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']
-//        );
-//    } else {
-//        header('Access-Control-Allow-Headers: Content-Type, Authorization');
-//    }
-
-//    header('Access-Control-Max-Age: 1800');
-//}
-
 function allowOrigin(
     array|string $methods = ['GET', 'POST', 'OPTIONS'],
     array        $allowed = ['http://localhost:3000']

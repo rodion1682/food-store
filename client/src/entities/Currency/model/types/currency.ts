@@ -1,7 +1,4 @@
-export type CurrencyType = string;
-
-export interface CurrencyScheme {
-	data?: string[];
-	isLoading: boolean;
-	error?: string;
+export enum Currency {
+	'EURO' = 'EURO',
+	'USD' = 'USD',
 }

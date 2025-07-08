@@ -6,8 +6,6 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
 import { Input, InputTheme } from 'shared/ui/Input';
 import { Profile } from '../../model/types/profile';
 import { Loader } from 'shared/ui/Loader';
-import { Select } from 'shared/ui/Select';
-import { Currency } from 'entities/Currency';
 
 interface ProfileCardProps {
 	className?: string;
@@ -97,7 +95,6 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 					readonly={readonly}
 					onChange={(val) => onChangeEmail(String(val))}
 				/>
-				<Currency selectedCurency={data?.currency} />
 			</div>
 		</div>
 	);
