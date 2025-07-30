@@ -10,6 +10,7 @@
 		opacity: 0.7;
 	}
 	&__placeholder {
+		background-color: var(--bg-color);
 		z-index: 11;
 		transform: scale(0.8) translate(0px, -70%);
 		top: 0px;
@@ -17,9 +18,7 @@
 		position: absolute;
 		transition: all 0.3s ease 0s;
 		padding: 0px 5px;
-		background-color: var(--bg-color);
 	}
-
 	&__label {
 		justify-content: space-between;
 		span {
@@ -31,10 +30,10 @@
 	}
 
 	&__dropdown {
-		width: 100%;
 		background-color: var(--bg-color-secondray);
-		border-radius: var(--border-radius);
+		width: 100%;
 		color: var(--primary-color);
+		border-radius: var(--border-radius);
 		//padding: 15px 0;
 		position: absolute;
 		top: calc(100% + 10px);

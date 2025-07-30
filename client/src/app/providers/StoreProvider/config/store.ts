@@ -34,6 +34,14 @@ export function createReduxStore(
 				thunk: {
 					extraArgument: extraArg,
 				},
+				serializableCheck: {
+					ignoredActions: ['profile/updateProfile', 'signup/setAvatar'],
+					ignoredPaths: [
+						'profile.form.updatedAvatarFile',
+						'profile.data.updatedAvatarFile',
+						'signupForm.avatar',
+					],
+				},
 			}),
 	});
 

@@ -1,0 +1,7 @@
+.ReviewList {
+	&__review {
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+}

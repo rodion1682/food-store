@@ -1,17 +1,77 @@
-.title {
-	font: var(--font-m);
-	color: var(--primary-color);
+//.title {
+//	font: var(--font-m);
+//	color: var(--primary-color);
+//}
+
+//.text {
+//	font: var(--font-s);
+//	color: var(--secondary-color);
+//}
+.primary {
+	.title {
+		font: var(--font-m);
+	}
+	.text {
+		font: var(--font-s);
+	}
+	.text,
+	.title {
+		color: var(--primary-color);
+	}
 }
 
-.text {
-	font: var(--font-s);
-	color: var(--secondary-color);
+.secondary {
+	.text,
+	.title {
+		color: var(--secondary-color);
+	}
 }
 
 .error {
 	.title,
 	.text {
 		color: var(--error-color);
+	}
+}
+
+.price {
+	.text {
+		font: var(--font-m);
+		color: var(--primary-color);
+	}
+}
+
+.sale_price {
+	.text {
+		font: var(--font-l);
+		color: var(--error-hover-color);
+	}
+}
+
+.old_price {
+	.text {
+		font: var(--font-m);
+		color: var(--secondary-color);
+		text-decoration: line-through;
+		opacity: 0.8;
+	}
+}
+
+.discount_percent {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: var(--error-hover-color);
+	padding: 8px;
+	border-radius: var(--border-radius);
+	z-index: var(--overflow-z-index);
+	border-bottom-left-radius: 0px;
+	border-top-right-radius: 0px;
+	.text {
+		color: var(--primary-color);
+		&::after {
+			content: "%";
+		}
 	}
 }
 

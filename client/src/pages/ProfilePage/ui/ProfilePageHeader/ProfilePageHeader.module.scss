@@ -3,7 +3,9 @@
 	justify-content: space-between;
 	gap: 20px;
 	&:not(:last-child) {
-		margin: 0px 0px 15px 0px;
+		margin-bottom: 15px;
+	}
+	&__wrapper {
 	}
 	&__actions {
 		display: flex;

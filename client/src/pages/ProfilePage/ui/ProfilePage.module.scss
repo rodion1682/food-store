@@ -9,4 +9,14 @@
 			margin: 0px 0px 15px 0px;
 		}
 	}
+	&__content {
+		display: flex;
+		gap: 15px;
+	}
+	&__inputs {
+		flex: 0 1 50%;
+	}
+	&__image {
+		flex: 0 1 50%;
+	}
 }

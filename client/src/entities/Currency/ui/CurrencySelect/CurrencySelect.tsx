@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Select } from 'shared/ui/Select';
+import { Select, SelectTheme } from 'shared/ui/Select';
 import { Currency } from '../../model/types/currency';
 
 interface CurrencySelectProps {

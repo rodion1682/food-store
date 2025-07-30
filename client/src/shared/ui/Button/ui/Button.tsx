@@ -16,6 +16,9 @@ export enum ButtonTheme {
 	SUBMIT = 'submit',
 	DROPDOWN = 'dropdown',
 	SELECT = 'select',
+	ACTION_BORDER = 'action_border',
+	ACTION = 'action',
+	CLEAN = 'clean',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

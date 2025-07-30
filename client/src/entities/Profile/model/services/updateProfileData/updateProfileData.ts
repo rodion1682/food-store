@@ -18,11 +18,27 @@ export const updateProfileData = createAsyncThunk<
 	if (errors.length) {
 		return rejectWithValue(errors);
 	}
+	if (!formData) {
+		return rejectWithValue([ValidateProfileErrors.NO_DATA]);
+	}
 
 	try {
-		const response = await extra.api.put<Profile>(
-			'/profile/updateProfile.php',
-			formData,
+		const formDataToSend = new FormData();
+		formDataToSend.append('id', String(formData.id));
+		formDataToSend.append('firstname', formData.firstname ?? '');
+		formDataToSend.append('lastname', formData.lastname ?? '');
+		formDataToSend.append('username', formData.username ?? '');
+		formDataToSend.append('email', formData.email ?? '');
+		formDataToSend.append('currency', formData.currency ?? '');
+		formDataToSend.append('avatar', formData.avatar ?? '');
+
+		if (formData.updatedAvatarFile) {
+			formDataToSend.append('updatedAvatarFile', formData.updatedAvatarFile);
+		}
+
+		const response = await extra.api.post<Profile>(
+			'/api/profile/updateProfileData',
+			formDataToSend,
 			{ withCredentials: true }
 		);
 

@@ -10,6 +10,19 @@
 	"Logout": "Выйти",
 	"Enter email": "Введите адрес электронной почты",
 	"Enter password": "Введите пароль",
+	"Enter firstname": "Введите имя",
+	"Enter lastname": "Введите фамилию",
+	"Enter username": "Введите имя пользователя",
+	"Select profile picture": "Выберите фотографию профиля",
 	"Login form": "Форма входа",
-	"You enter wrong email or password": "Вы ввели неправильный адрес электронной почты или пароль"
+	"You enter wrong email or password": "Вы ввели неправильный адрес электронной почты или пароль",
+	"Don't have an account?": "У вас нет учетной записи?",
+	"I already have an account!": "У меня уже есть аккаунт!",
+	"Signup form": "Форма регистрации",
+	"Signup": "Зарегистрироваться",
+	"Change Image": "Изменить изображение",
+	"Unfortunately, the image could not be loaded": "К сожалению, изображение не удалось загрузить",
+	"Enter reviews text": "Введите текст отзыва",
+	"Send review": "Send review",
+	"Leave a review for the product": "Оставьте отзыв о продукте"
 }

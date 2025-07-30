@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 import {
 	InputHTMLAttributes,
@@ -7,6 +7,7 @@ import {
 	useState,
 	useEffect,
 	useRef,
+	CSSProperties,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SvgIcon } from 'shared/ui/SvgIcon/ui/SvgIcon';
@@ -23,6 +24,7 @@ export enum InputTheme {
 	EURO = 'euro',
 	PRICE_RANGE = 'price_range',
 	PRICE_INPUT = 'price_input',
+	TEXTAREA = 'textarea',
 }
 
 export enum InputType {
@@ -49,6 +51,8 @@ interface InputProps extends HTMLInputProps {
 	label?: string;
 	autofocus?: boolean;
 	autocomplete?: string;
+	textarea?: boolean;
+	height?: string | number;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -64,6 +68,8 @@ export const Input = memo((props: InputProps) => {
 		readonly,
 		label,
 		autocomplete,
+		textarea,
+		height,
 		...otherProps
 	} = props;
 	const ref = useRef<HTMLInputElement>(null);
@@ -76,7 +82,9 @@ export const Input = memo((props: InputProps) => {
 		setIsVisible((prev) => !prev);
 	};
 
-	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+	const onChangeHandler = (
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
 		const raw = e.target.value;
 		const val = type === InputType.NUMBER ? Number(raw) || 0 : raw;
 		onChange?.(val);
@@ -103,17 +111,21 @@ export const Input = memo((props: InputProps) => {
 		setIsFocused(true);
 	};
 
+	const mods: Mods = {
+		[cls.Input_readonly]: readonly,
+		[cls.Input_focus]: isFocused,
+		[cls.Input_hasValue]: hasValue,
+		[cls.Input_textarea]: textarea,
+	};
+
+	const styles: CSSProperties = {
+		height,
+	};
+
 	return (
 		<div
-			className={classNames(
-				cls.Input,
-				{
-					[cls.Input_readonly]: readonly,
-					[cls.Input_focus]: isFocused,
-					[cls.Input_hasValue]: hasValue,
-				},
-				[className, cls[theme]]
-			)}
+			className={classNames(cls.Input, mods, [className, cls[theme]])}
+			style={styles}
 		>
 			{theme === InputTheme.SEARCH_INPUT && (
 				<SvgIcon className={cls.Input__icon} children={<SearchIcon />} />
@@ -123,24 +135,48 @@ export const Input = memo((props: InputProps) => {
 					{label}
 				</label>
 			)}
-			<input
-				ref={ref}
-				type={
-					type === InputType.PASSWORD
-						? isVisible === true
-							? InputType.TEXT
-							: InputType.PASSWORD
-						: type
-				}
-				value={hasValue ? value : ''}
-				onChange={onChangeHandler}
-				onFocus={onFocus}
-				onBlur={onBlur}
-				readOnly={readonly}
-				id={label}
-				autoComplete={autocomplete}
-				{...otherProps}
-			/>
+			{textarea ? (
+				<textarea
+					style={styles}
+					type={
+						type === InputType.PASSWORD
+							? isVisible === true
+								? InputType.TEXT
+								: InputType.PASSWORD
+							: type
+					}
+					value={hasValue ? value : ''}
+					onChange={onChangeHandler}
+					// @ts-ignore: TS2322
+					onFocus={onFocus}
+					// @ts-ignore: TS2322
+					onBlur={onBlur}
+					readOnly={readonly}
+					id={label}
+					autoComplete={autocomplete}
+					{...otherProps}
+				/>
+			) : (
+				<input
+					ref={ref}
+					type={
+						type === InputType.PASSWORD
+							? isVisible === true
+								? InputType.TEXT
+								: InputType.PASSWORD
+							: type
+					}
+					value={hasValue ? value : ''}
+					onChange={onChangeHandler}
+					onFocus={onFocus}
+					onBlur={onBlur}
+					readOnly={readonly}
+					id={label}
+					autoComplete={autocomplete}
+					{...otherProps}
+				/>
+			)}
+
 			{isPassword && (
 				<Button
 					onClick={passwordVisibleHandler}

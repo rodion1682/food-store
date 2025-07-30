@@ -1,0 +1,13 @@
+.ProductDetailsPage {
+	padding: 30px 0px;
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+	&__addReview {
+		&:not(:last-child) {
+			margin-bottom: 25px;
+		}
+	}
+}

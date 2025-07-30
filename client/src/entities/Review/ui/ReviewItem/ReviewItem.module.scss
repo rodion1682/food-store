@@ -1,0 +1,51 @@
+.ReviewItem {
+	background-color: var(--bg-secondary-color);
+	border-radius: var(--border-radius);
+	padding: 15px;
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		row-gap: 30px;
+		column-gap: 10px;
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+	&__user {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		@media (any-hover: hover) {
+			&:hover {
+				.ReviewItem__avatar {
+					border: 1px solid var(--hint-hover-color);
+				}
+				.ReviewItem__username {
+					p {
+						color: var(--hint-hover-color);
+					}
+				}
+			}
+		}
+	}
+	&__avatar {
+		transition: border 0.3s ease 0s;
+	}
+	&__username {
+		p {
+			transition: color 0.3s ease 0s;
+		}
+	}
+	&__data {
+		display: flex;
+		align-items: center;
+		gap: 3px;
+	}
+	&__rating {
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+}

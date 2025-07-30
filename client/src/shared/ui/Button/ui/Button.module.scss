@@ -5,7 +5,9 @@
 .green,
 .red,
 .dropdown,
-.select {
+.select,
+.action,
+.action_border {
 	color: var(--primary-color);
 	width: fit-content;
 	border-radius: var(--border-radius);
@@ -13,7 +15,8 @@
 	transition: background-color 0.3s ease 0s;
 }
 
-.primary {
+.primary,
+.action {
 	color: var(--primary-color);
 	background-color: var(--hint-color);
 	@media (any-hover: hover) {
@@ -93,12 +96,14 @@
 .password,
 .lang_switcher,
 .theme_switcher,
-.filterbar_switcher {
+.filterbar_switcher,
+.action,
+.action_border,
+.clean {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	transition: background-color 0.3s ease 0s;
-
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: var(--hint-hover-color);
@@ -107,7 +112,8 @@
 }
 
 .lang_switcher,
-.theme_switcher {
+.theme_switcher,
+.action_border {
 	border-radius: var(--border-radius);
 	color: var(--primary-color);
 	font-weight: 600;
@@ -122,6 +128,21 @@
 
 .theme_switcher {
 	padding: 0 10px 0 6px;
+}
+
+.action,
+.action_border {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+
+.clean {
+	width: 45px;
+	height: 45px;
+	color: var(--primary-color);
+	background-color: transparent;
 }
 
 .filterbar_switcher {

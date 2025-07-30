@@ -5,7 +5,13 @@ import cls from './ProfilePageHeader.module.scss';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Text } from 'shared/ui/Text';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { profileActions, updateProfileData } from 'entities/Profile';
+import {
+	getProfileData,
+	profileActions,
+	updateProfileData,
+} from 'entities/Profile';
+import { useAppSelector } from 'shared/lib/hooks/useAppSelector/useAppSelector';
+import { getUserAuthData } from 'entities/User';
 
 interface ProfilePageHeaderProps {
 	className?: string;
@@ -16,6 +22,10 @@ export const ProfilePageHeader = memo((props: ProfilePageHeaderProps) => {
 	const { className, readonly } = props;
 	const { t } = useTranslation('profile');
 	const dispatch = useAppDispatch();
+
+	const authData = useAppSelector(getUserAuthData);
+	const profileData = useAppSelector(getProfileData);
+	const canEdit = Number(authData.id) === Number(profileData?.id);
 
 	const handleEditProfile = useCallback(() => {
 		dispatch(profileActions.setReadonly(false));
@@ -36,22 +46,28 @@ export const ProfilePageHeader = memo((props: ProfilePageHeaderProps) => {
 					readonly ? t('Profile') : t('You are able to edit your profile')
 				}
 			/>
-			{readonly ? (
-				<Button onClick={handleEditProfile}>{t('Edit profile')}</Button>
-			) : (
-				<div className={cls.ProfilePageHeader__actions}>
-					<Button
-						onClick={handleCancelEditProfile}
-						theme={ButtonTheme.RED}
-					>
-						{t('Cancel changes')}
-					</Button>
-					<Button
-						onClick={handleSaveProfileChanges}
-						theme={ButtonTheme.GREEN}
-					>
-						{t('Save changes')}
-					</Button>
+			{canEdit && (
+				<div className={cls.ProfilePageHeader__wrapper}>
+					{readonly ? (
+						<Button onClick={handleEditProfile}>
+							{t('Edit profile')}
+						</Button>
+					) : (
+						<div className={cls.ProfilePageHeader__actions}>
+							<Button
+								onClick={handleCancelEditProfile}
+								theme={ButtonTheme.RED}
+							>
+								{t('Cancel changes')}
+							</Button>
+							<Button
+								onClick={handleSaveProfileChanges}
+								theme={ButtonTheme.GREEN}
+							>
+								{t('Save changes')}
+							</Button>
+						</div>
+					)}
 				</div>
 			)}
 		</div>

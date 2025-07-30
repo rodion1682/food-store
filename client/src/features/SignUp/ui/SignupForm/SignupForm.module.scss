@@ -1,0 +1,31 @@
+.SignupForm {
+	&__title,
+	&__body {
+		&:not(:last-child) {
+			margin-bottom: 25px;
+		}
+	}
+	&__body {
+		display: flex;
+		gap: 20px;
+	}
+	&__inputs {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	&__image {
+		flex: 0 0 290px;
+	}
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
+	&__button {
+		min-height: 45px;
+		width: 100%;
+		max-width: 290px;
+	}
+}

@@ -1,0 +1,22 @@
+.AddNewReviewForm {
+	background-color: var(--bg-secondary-color);
+	padding: 15px;
+	border-radius: var(--border-radius);
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+	&__rating {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+}

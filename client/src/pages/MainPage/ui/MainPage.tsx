@@ -9,6 +9,7 @@ interface MainPageProps {
 
 export const MainPage = memo(({ className }: MainPageProps) => {
 	const { t } = useTranslation('main');
+
 	return (
 		<div className={classNames(cls.MainPage, {}, [className])}>
 			<div> {t('Main Page')}</div>

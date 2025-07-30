@@ -10,6 +10,19 @@
 	"Logout": "Logout",
 	"Enter email": "Enter email",
 	"Enter password": "Enter password",
+	"Enter firstname": "Enter firstname",
+	"Enter lastname": "Enter lastname",
+	"Enter username": "Enter username",
+	"Select profile picture": "Select profile picture",
 	"Login form": "Login form",
-	"You enter wrong email or password": "You enter wrong email or password"
+	"You enter wrong email or password": "You enter wrong email or password",
+	"Don't have an account?": "Don't have an account?",
+	"I already have an account!": "I already have an account!",
+	"Signup form": "Signup form",
+	"Signup": "Signup",
+	"Change Image": "Change Image",
+	"Unfortunately, the image could not be loaded": "Unfortunately, the image could not be loaded",
+	"Enter reviews text": "Enter reviews text",
+	"Send review": "Send review",
+	"Leave a review for the product": "Leave a review for the product"
 }

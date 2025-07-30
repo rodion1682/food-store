@@ -6,6 +6,11 @@ import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useClickOutside } from 'shared/lib/hooks/useClickOutside/useClickOutside';
 import { slideToggle, slideUp } from 'shared/lib/hooks/slideToggle/slideToggle';
 
+export enum SelectTheme {
+	PRIMARY = 'primary',
+	SECONDARY = 'secondary',
+}
+
 interface SelectProps {
 	className?: string;
 	options?: string[];
@@ -13,6 +18,7 @@ interface SelectProps {
 	selectedOption?: string;
 	onChange?: (value: string) => void;
 	readonly?: boolean;
+	theme?: SelectTheme;
 }
 
 export const Select = memo((props: SelectProps) => {
@@ -24,6 +30,7 @@ export const Select = memo((props: SelectProps) => {
 		onChange,
 		readonly,
 		placeholder = t('Sort by'),
+		theme = SelectTheme.PRIMARY,
 	} = props;
 
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -69,7 +76,7 @@ export const Select = memo((props: SelectProps) => {
 	return (
 		<div
 			ref={dropdownRef}
-			className={classNames(cls.Select, mods, [className])}
+			className={classNames(cls.Select, mods, [className, theme])}
 		>
 			<span className={cls.Select__placeholder}>{placeholder}</span>
 			<Button

@@ -1,0 +1,33 @@
+.Counter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	border: 1px solid var(--primary-color);
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	position: relative;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		height: 100%;
+		width: 1px;
+		background-color: var(--primary-color);
+	}
+	&::before {
+		left: 45px;
+	}
+	&::after {
+		right: 45px;
+	}
+	&__value {
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 45px;
+	}
+}

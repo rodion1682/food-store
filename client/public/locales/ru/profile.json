@@ -16,5 +16,6 @@
 	"E-mail is not valid": "Некорректный адрес электронной почты",
 	"An email is required": "Требуется адрес электронной почты",
 	"Form data is required": "Данные формы обязательны",
-	"Update failed. Server error.": "Обновление не удалось. Ошибка сервера."
+	"Update failed. Server error.": "Обновление не удалось. Ошибка сервера.",
+	"Save changes": "Сохранить изменения"
 }

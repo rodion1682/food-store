@@ -16,7 +16,9 @@ export const loginByEmail = createAsyncThunk<
 >('login/loginByEmail', async (authData, thinkApi) => {
 	const { dispatch, extra, rejectWithValue } = thinkApi;
 	try {
-		const response = await extra.api.post<User>('/auth/login.php', authData);
+		const response = await extra.api.post<User>('/api/auth/login', authData);
+
+		console.log('authData', authData);
 
 		if (!response.data) {
 			throw new Error();

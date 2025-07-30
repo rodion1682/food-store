@@ -1,11 +1,21 @@
 .LoginForm {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	gap: 10px;
+	max-width: 290px;
+	&__body,
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: 25px;
+		}
+	}
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
 	&__button {
-		height: 45px;
-		max-width: 200px;
+		min-height: 45px;
 		width: 100%;
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
 	}
 }

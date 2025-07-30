@@ -4,7 +4,12 @@ import cls from './Text.module.scss';
 
 export enum TextTheme {
 	PRIMARY = 'primary',
+	SECONDARY = 'secondary',
 	ERROR = 'error',
+	PRICE = 'price',
+	SELE_PRICE = 'sale_price',
+	OLD_PRICE = 'old_price',
+	DISCOUNT_PERCENT = 'discount_percent',
 }
 
 export enum TextAlign {
@@ -15,8 +20,8 @@ export enum TextAlign {
 
 interface TextProps {
 	className?: string;
-	title?: string;
-	text?: string;
+	title?: string | number;
+	text?: string | number;
 	theme?: TextTheme;
 	align?: TextAlign;
 }

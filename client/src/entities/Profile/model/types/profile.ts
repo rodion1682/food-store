@@ -11,11 +11,13 @@ export enum ValidateProfileErrors {
 }
 
 export interface Profile {
+	id?: number;
 	firstname?: string;
 	lastname?: string;
 	username?: string;
 	email?: string;
 	avatar?: string;
+	updatedAvatarFile?: File;
 	currency?: string;
 }
 

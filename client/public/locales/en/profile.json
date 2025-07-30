@@ -16,5 +16,6 @@
 	"E-mail is not valid": "E-mail is not valid",
 	"An email is required": "An email is required",
 	"Form data is required": "Form data is required",
-	"Update failed. Server error.": "Update failed. Server error."
+	"Update failed. Server error.": "Update failed. Server error.",
+	"Save changes": "Save changes"
 }

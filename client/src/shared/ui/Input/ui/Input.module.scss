@@ -2,12 +2,13 @@
 	position: relative;
 	width: 100%;
 	height: 45px;
+	transition: opacity 0.3s ease 0s;
 	&_focus,
 	&_hasValue {
 		.Input__label {
-			transform: scale(0.8) translate(0px, -70%);
-			top: 0px;
-			left: 0px;
+			font-size: 14px;
+			line-height: 14px;
+			top: 0 !important;
 		}
 	}
 	&_readonly {
@@ -20,13 +21,13 @@
 			}
 		}
 	}
+	textarea,
 	input {
 		border: 1px solid var(--primary-color);
 		border-radius: var(--border-radius);
 		color: var(--primary-color);
 		font-weight: 600;
 		height: var(--input-height);
-		letter-spacing: var(--letter-spacing);
 		opacity: 1;
 		outline: transparent;
 		pointer-events: auto;
@@ -147,6 +148,19 @@
 	.Input__label {
 		&:not(:last-child) {
 			margin: 0px 0px 5px 0px;
+		}
+	}
+}
+
+.textarea {
+	.Input__label {
+		top: 25px;
+	}
+	textarea {
+		padding: 15px;
+		resize: none;
+		&:focus {
+			outline: none;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 import { MainPage } from 'pages/MainPage';
 import { NotFoundPage } from 'pages/NotFoundPage';
+import { ProductDetailsPage } from 'pages/ProductDetailsPage';
 import { ProductsPage } from 'pages/ProductsPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
@@ -12,6 +13,7 @@ export enum Approutes {
 	MAIN = 'main',
 	PRODUCTS = 'products',
 	PROFILE = 'profile',
+	PROFILE_DETAILS = 'profile_details',
 	// last route
 	NOT_FOUND = 'not_found',
 }
@@ -19,7 +21,8 @@ export enum Approutes {
 export const RoutePath: Record<Approutes, string> = {
 	[Approutes.MAIN]: '/',
 	[Approutes.PRODUCTS]: '/products',
-	[Approutes.PROFILE]: '/profile',
+	[Approutes.PROFILE]: '/profile/', // + :id
+	[Approutes.PROFILE_DETAILS]: '/products/', // + :id
 	[Approutes.NOT_FOUND]: '*',
 };
 
@@ -33,9 +36,13 @@ export const routeConfig: Record<Approutes, AppRoutesProps> = {
 		element: <ProductsPage />,
 	},
 	[Approutes.PROFILE]: {
-		path: RoutePath.profile,
+		path: `${RoutePath.profile}:id`,
 		element: <ProfilePage />,
 		authOnly: true,
+	},
+	[Approutes.PROFILE_DETAILS]: {
+		path: `${RoutePath.profile_details}:id`,
+		element: <ProductDetailsPage />,
 	},
 	[Approutes.NOT_FOUND]: {
 		path: RoutePath.not_found,

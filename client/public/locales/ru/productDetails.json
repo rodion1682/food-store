@@ -1,0 +1,17 @@
+{
+	"Product could not be found": "Товар не найден",
+	"An error occurred while loading the product": "Произошла ошибка при загрузке продукта",
+	"Add to wishlist": "Добавить в избранное",
+	"Add to cart": "Добавить в корзину",
+	"Product viewed:": "Продукт просмотрен:",
+	"Product reviews": "Отзывы о продукте",
+	"This product has no reviews": "This product has no reviews",
+	"Posted on": "Опубликовано",
+	"Based on": "На основе",
+	"reviews": "отзывов",
+	"Poor": "Плохо",
+	"Fair": "Удовлетворительно",
+	"Average": "Средне",
+	"Good": "Хорошо",
+	"Great!": "Отлично!"
+}
