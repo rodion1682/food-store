@@ -19,7 +19,7 @@ import { getProductDetailsReviewIsLoading } from '../../model/selectors/reviews/
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchReviewsByProductId } from '../../model/services/fetchReviewsByProductId/fetchReviewsByProductId';
 import { AddNewReviewForm } from 'features/addNewReview';
-import { addReviewForProduct } from 'pages/ProductDetailsPage/model/services/addReviewForProduct/addReviewForProduct';
+import { addReviewForProduct } from '../../model/services/addReviewForProduct/addReviewForProduct';
 
 interface ProductDetailsPageProps {
 	className?: string;

@@ -13,23 +13,6 @@
 			margin-bottom: 10px;
 		}
 	}
-	&__user {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		@media (any-hover: hover) {
-			&:hover {
-				.ReviewItem__avatar {
-					border: 1px solid var(--hint-hover-color);
-				}
-				.ReviewItem__username {
-					p {
-						color: var(--hint-hover-color);
-					}
-				}
-			}
-		}
-	}
 	&__avatar {
 		transition: border 0.3s ease 0s;
 	}

@@ -18,6 +18,7 @@ export const Avatar = memo((props: AvatarProps) => {
 	const styles: CSSProperties = {
 		height,
 		width,
+		minWidth: width,
 		borderRadius: border,
 	};
 

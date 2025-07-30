@@ -1,0 +1,26 @@
+.ProfileLink {
+	display: flex;
+	align-items: center;
+	position: relative;
+	@media (any-hover: hover) {
+		&:hover {
+			.ProfileLink__avatar {
+				border: 1px solid var(--hint-hover-color);
+			}
+			.ProfileLink__username {
+				p {
+					color: var(--hint-hover-color);
+				}
+			}
+		}
+	}
+	&__avatar {
+		transition: border 0.3s ease 0s;
+	}
+	&__username {
+		margin-left: 10px;
+		p {
+			transition: color 0.3s ease 0s;
+		}
+	}
+}

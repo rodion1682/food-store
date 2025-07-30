@@ -7,7 +7,7 @@ import { StarRating } from 'shared/ui/StarRating';
 import { Skeleton } from 'shared/ui/Skeleton/ui/Skeleton';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from 'shared/ui/Avatar';
-import { AppLink } from 'shared/ui/AppLink';
+import { AppLink, ProfileLink } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 interface ReviewItemProps {
@@ -42,22 +42,18 @@ export const ReviewItem = memo((props: ReviewItemProps) => {
 		);
 	}
 
+	if (!review) {
+		return null;
+	}
+
 	return (
 		<div className={classNames(cls.ReviewItem, {}, [className])}>
 			<div className={cls.ReviewItem__header}>
-				<AppLink
-					to={`${RoutePath.profile}${review?.user?.id}`}
-					className={cls.ReviewItem__user}
-				>
-					<Avatar
-						className={cls.ReviewItem__avatar}
-						src={review?.user?.avatar}
-					/>
-					<Text
-						className={cls.ReviewItem__username}
-						title={review?.user?.username}
-					/>
-				</AppLink>
+				<ProfileLink
+					id={review.user.id}
+					src={review.user.avatar}
+					username={review.user.username}
+				/>
 				<div className={cls.ReviewItem__data}>
 					<Text text={t('Posted on')} />
 					<Text text={review?.created_at} />

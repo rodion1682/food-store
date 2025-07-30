@@ -11,9 +11,9 @@
 			// AUTH logic wrapped in try / catch
 			try {
 
-			// Prepared statement: fetch user by username
+			// Prepared statement: fetch user by email
 			$stmt = $connect->prepare(
-				'SELECT id, email, password FROM users WHERE email = ?'
+    			'SELECT id, email, password, username, avatar FROM users WHERE email = ?'
 			);
 			if (!$stmt) {
 				throw new Exception($connect->error);
@@ -43,7 +43,7 @@
 			unset($user['password']);
 			$_SESSION['user_id'] = $user['id'];
 
-			echo json_encode($user); // 200 OK
+			echo json_encode($user);
 
 			} catch (Exception $e) {
 				http_response_code(500);

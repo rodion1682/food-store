@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Navbar.module.scss';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
+import { AppLink, AppLinkTheme, ProfileLink } from 'shared/ui/AppLink';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { useTranslation } from 'react-i18next';
@@ -69,13 +69,15 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 						{t('Products Page')}
 					</AppLink>
 					{authData && (
-						<AppLink
-							to={RoutePath.profile}
-							theme={AppLinkTheme.NAVBAR}
+						<ProfileLink
+							id={authData.id}
+							src={authData.avatar}
+							username={authData.username}
 							active={isActive(RoutePath.profile)}
-						>
-							{t('Profile Page')}
-						</AppLink>
+							theme={AppLinkTheme.NAVBAR}
+							width={35}
+							height={35}
+						/>
 					)}
 				</div>
 				<div className={cls.Navbar__actions}>

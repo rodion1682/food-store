@@ -18,8 +18,6 @@ export const loginByEmail = createAsyncThunk<
 	try {
 		const response = await extra.api.post<User>('/api/auth/login', authData);
 
-		console.log('authData', authData);
-
 		if (!response.data) {
 			throw new Error();
 		}
@@ -31,7 +29,7 @@ export const loginByEmail = createAsyncThunk<
 
 		dispatch(userActions.setAuthData(response.data));
 
-		extra.navigate?.(RoutePath.profile);
+		extra.navigate?.(`${RoutePath.profile}${response.data.id}`);
 
 		return response.data;
 	} catch (error) {
