@@ -18,7 +18,8 @@
 	--font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
 	// Z - indexes
-	--overflow-z-index: 1;
+	--overlap-z-index: 1;
+	--overlap-z-index-secondary: 2;
 	--modal-z-index: 10;
 
 	// Colors that are similar to light and dark themes

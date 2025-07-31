@@ -77,6 +77,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 							theme={AppLinkTheme.NAVBAR}
 							width={35}
 							height={35}
+							limitWidth
 						/>
 					)}
 				</div>

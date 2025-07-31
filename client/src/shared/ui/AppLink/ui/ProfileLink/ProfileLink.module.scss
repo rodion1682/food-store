@@ -2,6 +2,16 @@
 	display: flex;
 	align-items: center;
 	position: relative;
+	&_limitWidth {
+		.ProfileLink__username {
+			p {
+				max-width: 150px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+	}
 	@media (any-hover: hover) {
 		&:hover {
 			.ProfileLink__avatar {

@@ -11,6 +11,7 @@ interface StarRatingProps {
 	max?: number;
 	average?: number;
 	total?: number;
+	title?: number;
 	totalTextBefore?: string;
 	totalTextAfter?: string;
 	onSelect?: (value: number) => void;
@@ -27,6 +28,7 @@ export function StarRating(props: StarRatingProps) {
 		max = 5,
 		total,
 		average,
+		title,
 		totalTextBefore,
 		totalTextAfter,
 		onSelect,
@@ -85,9 +87,7 @@ export function StarRating(props: StarRatingProps) {
 
 	return (
 		<div className={classNames(cls.StarRating, {}, [className])}>
-			{average && (
-				<Text className={cls.StarRating__average} title={average} />
-			)}
+			{title && <Text className={cls.StarRating__average} title={title} />}
 			{[...Array(max)].map((_, i) => {
 				const starNumber = i + 1;
 				let fill = 0;
@@ -119,9 +119,15 @@ export function StarRating(props: StarRatingProps) {
 			{showRatingGrade && displayValue > 0 && (
 				<Text className={cls.StarRating__ratingGrade} title={currentText} />
 			)}
-			{total && totalTextBefore && totalTextAfter && (
+			{total && (
 				<div className={cls.StarRating__bottom}>
-					<Text text={`${totalTextBefore} ${total} ${totalTextAfter}`} />
+					<Text
+						text={
+							totalTextBefore && totalTextAfter
+								? `${totalTextBefore} ${total} ${totalTextAfter}`
+								: String(total)
+						}
+					/>
 				</div>
 			)}
 		</div>

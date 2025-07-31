@@ -1,5 +1,7 @@
 .ProductsPage {
-	display: flex;
+	&__container {
+		display: flex;
+	}
 	&__content {
 		flex-grow: 1;
 	}

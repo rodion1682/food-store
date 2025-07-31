@@ -3,6 +3,7 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { Profile, ValidateProfileErrors } from '../../types/profile';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
 import { validateProfileData } from '../validateProfileData/validateProfileData';
+import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
 
 export const updateProfileData = createAsyncThunk<
 	Profile,
@@ -40,6 +41,19 @@ export const updateProfileData = createAsyncThunk<
 			'/api/profile/updateProfileData',
 			formDataToSend,
 			{ withCredentials: true }
+		);
+
+		const localStoregaData = {
+			id: response.data.id,
+			username: response.data.username,
+			avatar: response.data.avatar,
+			currency: response.data.currency,
+			email: response.data.email,
+		};
+
+		localStorage.setItem(
+			USER_LOCALSTORAGE_KEY,
+			JSON.stringify(localStoregaData)
 		);
 
 		return response.data;

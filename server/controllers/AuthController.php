@@ -13,7 +13,7 @@
 
 			// Prepared statement: fetch user by email
 			$stmt = $connect->prepare(
-    			'SELECT id, email, password, username, avatar FROM users WHERE email = ?'
+    			'SELECT id, email, password, username, avatar, currency  FROM users WHERE email = ?'
 			);
 			if (!$stmt) {
 				throw new Exception($connect->error);
@@ -128,6 +128,7 @@
 				'username' => $username,
 				'email' => $email,
 				'avatar' => $avatarPath,
+				'currency' => $currency,
 			];
 
 			http_response_code(201);

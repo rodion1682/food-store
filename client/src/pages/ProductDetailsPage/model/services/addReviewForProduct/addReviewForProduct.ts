@@ -39,7 +39,7 @@ export const addReviewForProduct = createAsyncThunk<
 		}
 
 		dispatch(fetchReviewsByProductId(String(product.id)));
-		dispatch(fetchProductById(product.id));
+		dispatch(fetchProductById(Number(product.id)));
 
 		return response.data;
 	} catch (error) {

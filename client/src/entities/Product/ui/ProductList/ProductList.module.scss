@@ -1,0 +1,11 @@
+.ProductList {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -5px;
+	padding-left: 5px;
+	transition: all 0.3s ease 0s;
+	&_collapsed {
+		margin-left: -5px;
+		padding-left: 0px;
+	}
+}

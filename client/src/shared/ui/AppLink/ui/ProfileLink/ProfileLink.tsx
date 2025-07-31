@@ -8,21 +8,36 @@ import { Text } from 'shared/ui/Text';
 
 interface ProfileLinkProps {
 	className?: string;
-	id?: string | number;
-	username?: string;
-	src?: string;
+	id: string | number;
+	username: string;
+	src: string;
 	height?: string | number;
 	width?: string | number;
 	active?: boolean;
 	theme?: AppLinkTheme;
+	limitWidth?: boolean;
 }
 
 export const ProfileLink = memo((props: ProfileLinkProps) => {
-	const { className, id, username, src, height, width, active, theme } = props;
+	const {
+		className,
+		id,
+		username,
+		src,
+		height,
+		width,
+		active,
+		theme,
+		limitWidth,
+	} = props;
 
 	return (
 		<AppLink
-			className={classNames(cls.ProfileLink, {}, [className])}
+			className={classNames(
+				cls.ProfileLink,
+				{ [cls.ProfileLink_limitWidth]: limitWidth },
+				[className]
+			)}
 			to={`${RoutePath.profile}${id}`}
 			active={active}
 			theme={theme}

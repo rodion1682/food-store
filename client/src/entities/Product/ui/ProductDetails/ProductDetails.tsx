@@ -122,6 +122,7 @@ export const ProductDetails = memo((props: ProductDetailsProps) => {
 					<StarRating
 						value={product?.product_rating_average}
 						average={product?.product_rating_average}
+						title={product?.product_rating_average}
 						total={product?.product_rating_total}
 						totalTextBefore={t('Based on')}
 						totalTextAfter={t('reviews')}

@@ -8,3 +8,5 @@ export { getProductIsLoading } from './model/selectors/getProductIsLoading/getPr
 export { getProductError } from './model/selectors/getProductError/getProductError';
 
 export { fetchProductById } from './model/services/fetchProductById/fetchProductById';
+
+export { ProductList } from './ui/ProductList/ProductList';

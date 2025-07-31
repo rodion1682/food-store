@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Filterbar.module.scss';
 import { Button, ButtonTheme } from 'shared/ui/Button';
@@ -9,12 +9,13 @@ import { PriceRangeSlider } from 'shared/ui/PriceRangeSlider';
 
 interface FilterbarProps {
 	className?: string;
+	collapsed: boolean;
+	setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Filterbar = memo(({ className }: FilterbarProps) => {
+export const Filterbar = memo((props: FilterbarProps) => {
+	const { className, collapsed, setCollapsed } = props;
 	const { t } = useTranslation();
-	const [colapsed, setCollapsed] = useState(false);
-
 	const collapseHandler = () => {
 		setCollapsed((prev) => !prev);
 	};
@@ -22,14 +23,14 @@ export const Filterbar = memo(({ className }: FilterbarProps) => {
 		<div
 			className={classNames(
 				cls.Filterbar,
-				{ [cls.Filterbar_colapsed]: colapsed },
+				{ [cls.Filterbar_collapsed]: collapsed },
 				[className]
 			)}
 		>
 			<Button
 				className={classNames(
 					cls.Filterbar__button,
-					{ [cls.Filterbar__button_colapsed]: colapsed },
+					{ [cls.Filterbar__button_collapsed]: collapsed },
 					[className]
 				)}
 				onClick={collapseHandler}

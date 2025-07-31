@@ -36,7 +36,7 @@
 
 .price {
 	.text {
-		font: var(--font-m);
+		font: var(--font-l);
 		color: var(--primary-color);
 	}
 }
@@ -64,7 +64,7 @@
 	background-color: var(--error-hover-color);
 	padding: 8px;
 	border-radius: var(--border-radius);
-	z-index: var(--overflow-z-index);
+	z-index: var(--overlap-z-index);
 	border-bottom-left-radius: 0px;
 	border-top-right-radius: 0px;
 	.text {
